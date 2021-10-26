@@ -11,7 +11,7 @@ cmake -G "NMake Makefiles" ^
       -DENABLE_DOCS=OFF                            ^
       -DENABLE_EXAMPLES=ON                         ^
       -DENABLE_TESTS=OFF                           ^
-      ..
+      %SRC_DIR%
 
 if errorlevel 1 exit 1
 
