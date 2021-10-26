@@ -32,7 +32,7 @@ test:
     - test -f ${PREFIX}/lib/libaom${SHLIB_EXT}       # [unix]
     - test -f ${PREFIX}/lib/pkgconfig/aom.pc         # [unix]
     - if not exist %LIBRARY_INC%\\aom\\aom.h exit 1  # [win]
-    - if not exist %LIBRARY_LIB%\\aom.dll exit 1     # [win]
+    - if not exist %LIBRARY_BIN%\\aom.dll exit 1     # [win]
 
 about:
   home: https://aomedia.org/
