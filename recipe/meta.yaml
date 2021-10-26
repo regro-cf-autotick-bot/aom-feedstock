@@ -10,8 +10,7 @@ source:
   sha256: 8fa7418bf4ea12ef6dcf0eeb21cba932b71c6079ffdf7b9d13cf907fa46c0568
 
 build:
-  number: 1
-  skip: True  # [win]
+  number: 2
   run_exports:
     # Just a guess...
     - {{ pin_subpackage('aom', max_pin='x.x') }}
@@ -29,9 +28,11 @@ test:
   commands:
     - aomenc --help  # [build_platform == target_platform]
     - aomdec --help  # [build_platform == target_platform]
-    - test -f ${PREFIX}/include/aom/aom.h
-    - test -f ${PREFIX}/lib/libaom${SHLIB_EXT}
-    - test -f ${PREFIX}/lib/pkgconfig/aom.pc
+    - test -f ${PREFIX}/include/aom/aom.h            # [unix]
+    - test -f ${PREFIX}/lib/libaom${SHLIB_EXT}       # [unix]
+    - test -f ${PREFIX}/lib/pkgconfig/aom.pc         # [unix]
+    - if not exist %LIBRARY_INC%\\aom\\aom.h exit 1  # [win]
+    - if not exist %LIBRARY_BIN%\\aom.dll exit 1     # [win]
 
 about:
   home: https://aomedia.org/
