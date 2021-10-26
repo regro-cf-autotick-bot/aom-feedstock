@@ -10,7 +10,7 @@ source:
   sha256: 8fa7418bf4ea12ef6dcf0eeb21cba932b71c6079ffdf7b9d13cf907fa46c0568
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win]
   run_exports:
     # Just a guess...
@@ -27,11 +27,11 @@ requirements:
 
 test:
   commands:
-    - aomenc --help
-    - aomdec --help
-    - test -f ${PREFIX}/include/aom/aom.h       # [unix]
-    - test -f ${PREFIX}/lib/libaom${SHLIB_EXT}  # [unix]
-    - test -f ${PREFIX}/lib/pkgconfig/aom.pc    # [unix]
+    - aomenc --help  # [build_platform == target_platform]
+    - aomdec --help  # [build_platform == target_platform]
+    - test -f ${PREFIX}/include/aom/aom.h
+    - test -f ${PREFIX}/lib/libaom${SHLIB_EXT}
+    - test -f ${PREFIX}/lib/pkgconfig/aom.pc
 
 about:
   home: https://aomedia.org/
