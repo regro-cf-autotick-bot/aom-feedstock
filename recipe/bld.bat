@@ -6,7 +6,7 @@ cd ..\build-stage
 cmake -G "NMake Makefiles"                           ^
       -DCMAKE_BUILD_TYPE="Release"                   ^
       -DCMAKE_INSTALL_PREFIX:PATH="%LIBRARY_PREFIX%" ^
-      -DCMAKE_INSTALL_LIBDIR="lib                    ^
+      -DCMAKE_INSTALL_LIBDIR="lib"                   ^
       -DBUILD_SHARED_LIBS=ON                         ^
       -DENABLE_DOCS=OFF                              ^
       -DENABLE_EXAMPLES=ON                           ^
