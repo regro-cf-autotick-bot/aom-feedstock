@@ -10,7 +10,7 @@ source:
   sha256: 1dafde32bc2237bf0570294661ae61db30e818840f77dc4e90d1ebf5a6286664
 
 build:
-  number: 0
+  number: 1
   run_exports:
     # Just a guess...
     - {{ pin_subpackage('aom', max_pin='x.x') }}
@@ -22,7 +22,7 @@ requirements:
     - cmake
     - perl
     - nasm
-    - make
+    - make   # [unix]
 
 test:
   commands:
@@ -30,6 +30,7 @@ test:
     - aomdec --help  # [build_platform == target_platform]
     - test -f ${PREFIX}/include/aom/aom.h            # [unix]
     - test -f ${PREFIX}/lib/libaom${SHLIB_EXT}       # [unix]
+    - test ! -f ${PREFIX}/lib/libaom.a               # [unix]
     - test -f ${PREFIX}/lib/pkgconfig/aom.pc         # [unix]
     - if not exist %LIBRARY_INC%\\aom\\aom.h exit 1  # [win]
     - if not exist %LIBRARY_BIN%\\aom.dll exit 1     # [win]

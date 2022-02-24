@@ -5,6 +5,7 @@ set -ex
 mkdir build-stage
 cd build-stage
 
+
 cmake ${CMAKE_ARGS} -DCMAKE_BUILD_TYPE="Release"   \
       -DCMAKE_INSTALL_PREFIX=${PREFIX}             \
       -DCMAKE_INSTALL_LIBDIR:PATH=${PREFIX}/lib    \
@@ -22,3 +23,9 @@ make
 # make -j${CPU_COUNT} runtests
 
 make install
+
+# Even if you build shared libraries, the static ones still
+# get installed
+# Remove static libraries that are installed
+# https://github.com/conda-forge/aom-feedstock/issues/7
+rm ${PREFIX}/lib/*.a
