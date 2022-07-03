@@ -7,7 +7,7 @@ index e8fff2e77..e71e13b20 100644
  if(CONFIG_MULTITHREAD AND HAVE_PTHREAD_H)
    file(APPEND "${pkgconfig_file}" "Libs.private: -lm -lpthread\n")
 -else()
-+elseif(not WIN32)
++elseif(NOT WIN32)
    file(APPEND "${pkgconfig_file}" "Libs.private: -lm\n")
  endif()
  file(APPEND "${pkgconfig_file}" "Cflags: -I\${includedir}\n")
