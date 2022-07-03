@@ -8,9 +8,11 @@ package:
 source:
   url: https://storage.googleapis.com/aom-releases/libaom-{{ version }}.tar.gz
   sha256: bd754b58c3fa69f3ffd29da77de591bd9c26970e3b18537951336d6c0252e354
+  patches:
+    - do_not_link_to_libm_windows.patch
 
 build:
-  number: 0
+  number: 1
   run_exports:
     # Just a guess...
     - {{ pin_subpackage('aom', max_pin='x.x') }}
