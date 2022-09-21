@@ -1,5 +1,5 @@
 {% set name = "aom" %}
-{% set version = "3.4.0" %}
+{% set version = "3.5.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://storage.googleapis.com/aom-releases/libaom-{{ version }}.tar.gz
-  sha256: bd754b58c3fa69f3ffd29da77de591bd9c26970e3b18537951336d6c0252e354
+  sha256: d37dbee372e2430a7efde813984ae6d78bdf1fc4080ebe32457c9115408b0738
   patches:
     - do_not_link_to_libm_windows.patch
 
 build:
-  number: 1
+  number: 0
   run_exports:
     # Just a guess...
     - {{ pin_subpackage('aom', max_pin='x.x') }}
