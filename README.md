@@ -1,11 +1,11 @@
-About aom
-=========
+About aom-feedstock
+===================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/aom-feedstock/blob/main/LICENSE.txt)
 
 Home: https://aomedia.org/
 
 Package license: BSD-2-Clause
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/aom-feedstock/blob/main/LICENSE.txt)
 
 Summary: Alliance for Open Media video codec
 
