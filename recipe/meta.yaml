@@ -9,7 +9,9 @@ source:
   url: https://storage.googleapis.com/aom-releases/libaom-{{ version }}.tar.gz
   sha256: d1773bb6f050b430af47741306ac37a6aa2fec7364cb0dc27e3b1454a138934f
   patches:
-    - do_not_link_to_libm_windows.patch
+    - 0001-Fix-compilation-flags-for-win32.patch
+    - 0002-Remove-all-reference-of-aom_static.patch
+    - 0003-Dont-forcibly-set-the-ASM-compiler.patch
 
 build:
   number: 0
