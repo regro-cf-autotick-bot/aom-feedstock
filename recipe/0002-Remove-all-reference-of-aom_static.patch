@@ -58,7 +58,7 @@ index 8f459f39c4..7a0c183ec4 100644
  
  # Setup dependencies.
  if(CONFIG_THREE_PASS)
-@@ -576,15 +561,9 @@ if(CONFIG_AV1_ENCODER)
+@@ -573,15 +558,9 @@ if(CONFIG_AV1_ENCODER)
      endif()
  
      set_target_properties(aom PROPERTIES LINKER_LANGUAGE CXX)
@@ -74,7 +74,7 @@ index 8f459f39c4..7a0c183ec4 100644
    endif()
  
    if(CONFIG_TFLITE)
-@@ -632,10 +611,6 @@ if(CONFIG_AV1_ENCODER)
+@@ -629,10 +608,6 @@ if(CONFIG_AV1_ENCODER)
      find_package(PkgConfig)
      if(PKG_CONFIG_FOUND)
        pkg_check_modules(VMAF REQUIRED libvmaf)
@@ -85,7 +85,7 @@ index 8f459f39c4..7a0c183ec4 100644
        target_link_libraries(aom PRIVATE ${VMAF_LDFLAGS} ${VMAF_LIBRARIES})
        target_include_directories(aom_dsp_encoder PRIVATE ${VMAF_INCLUDE_DIRS})
        if(VMAF_CFLAGS)
-@@ -647,9 +622,6 @@ if(CONFIG_AV1_ENCODER)
+@@ -644,9 +619,6 @@ if(CONFIG_AV1_ENCODER)
        message(FATAL_ERROR "CONFIG_TUNE_VMAF error: pkg-config not found.")
      endif()
      set_target_properties(aom PROPERTIES LINKER_LANGUAGE CXX)
@@ -95,7 +95,7 @@ index 8f459f39c4..7a0c183ec4 100644
    endif()
  endif()
  
-@@ -773,9 +745,6 @@ endif()
+@@ -770,9 +742,6 @@ endif()
  if(HAVE_PTHREAD_H AND CONFIG_MULTITHREAD)
    find_package(Threads)
    target_link_libraries(aom ${AOM_LIB_LINK_TYPE} Threads::Threads)
@@ -109,7 +109,7 @@ diff --git a/aom_dsp/aom_dsp.cmake b/aom_dsp/aom_dsp.cmake
 index 4c60e5c5e9..5c43b78e73 100644
 --- a/aom_dsp/aom_dsp.cmake
 +++ b/aom_dsp/aom_dsp.cmake
-@@ -337,9 +337,6 @@ function(setup_aom_dsp_targets)
+@@ -371,9 +371,6 @@ function(setup_aom_dsp_targets)
    create_no_op_source_file("aom_av1" "c" "no_op_source_file")
    add_library(aom_dsp OBJECT "${no_op_source_file}")
    target_sources(aom PRIVATE $<TARGET_OBJECTS:aom_dsp_common>)
@@ -119,7 +119,7 @@ index 4c60e5c5e9..5c43b78e73 100644
    list(APPEND AOM_LIB_TARGETS aom_dsp)
  
    # Not all generators support libraries consisting only of object files. Add a
-@@ -350,18 +347,12 @@ function(setup_aom_dsp_targets)
+@@ -384,18 +381,12 @@ function(setup_aom_dsp_targets)
      add_library(aom_dsp_decoder OBJECT ${AOM_DSP_DECODER_SOURCES})
      list(APPEND AOM_LIB_TARGETS aom_dsp_decoder)
      target_sources(aom PRIVATE $<TARGET_OBJECTS:aom_dsp_decoder>)
@@ -138,7 +138,7 @@ index 4c60e5c5e9..5c43b78e73 100644
      if(CONFIG_TUNE_VMAF)
        target_include_directories(aom_dsp_encoder PRIVATE ${VMAF_INCLUDE_DIRS})
      endif()
-@@ -434,9 +425,6 @@ function(setup_aom_dsp_targets)
+@@ -485,9 +476,6 @@ function(setup_aom_dsp_targets)
    endif()
  
    target_sources(aom PRIVATE $<TARGET_OBJECTS:aom_dsp>)
@@ -164,7 +164,7 @@ diff --git a/aom_ports/aom_ports.cmake b/aom_ports/aom_ports.cmake
 index e3b67e48ae..56f173ff7f 100644
 --- a/aom_ports/aom_ports.cmake
 +++ b/aom_ports/aom_ports.cmake
-@@ -67,13 +67,10 @@ function(setup_aom_ports_targets)
+@@ -72,13 +72,10 @@ function(setup_aom_ports_targets)
  
    if("${AOM_TARGET_CPU}" MATCHES "arm|ppc")
      target_sources(aom PRIVATE $<TARGET_OBJECTS:aom_ports>)
@@ -180,7 +180,7 @@ index e3b67e48ae..56f173ff7f 100644
    # language support in project(). These sources were never included in
    # libaom_srcs.*; if it becomes necessary for a particular generator another
    # method should be used.
-@@ -84,8 +81,5 @@ function(setup_aom_ports_targets)
+@@ -89,8 +86,5 @@ function(setup_aom_ports_targets)
      set(AOM_LIB_TARGETS ${AOM_LIB_TARGETS} PARENT_SCOPE)
    else()
      target_sources(aom PRIVATE ${AOM_PORTS_INCLUDES})
@@ -219,7 +219,7 @@ diff --git a/av1/av1.cmake b/av1/av1.cmake
 index 43b7665bb8..7117a63bdc 100644
 --- a/av1/av1.cmake
 +++ b/av1/av1.cmake
-@@ -512,26 +512,17 @@ function(setup_av1_targets)
+@@ -540,26 +540,17 @@ function(setup_av1_targets)
    add_library(aom_av1_common OBJECT ${AOM_AV1_COMMON_SOURCES})
    list(APPEND AOM_LIB_TARGETS aom_av1_common)
    target_sources(aom PRIVATE $<TARGET_OBJECTS:aom_av1_common>)

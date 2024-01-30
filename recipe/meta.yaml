@@ -11,7 +11,6 @@ source:
   patches:
     - 0001-Fix-compilation-flags-for-win32.patch
     - 0002-Remove-all-reference-of-aom_static.patch
-    - 0003-Dont-forcibly-set-the-ASM-compiler.patch
 
 build:
   number: 0
