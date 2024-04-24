@@ -1,5 +1,5 @@
 {% set name = "aom" %}
-{% set version = "3.8.2" %}
+{% set version = "3.9.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://storage.googleapis.com/aom-releases/libaom-{{ version }}.tar.gz
-  sha256: 98f7d6d7ddbf06d088735f5e51782df053fd1b08c553882c2924bd0b2021a202
+  sha256: a662e22299752547488c8e1412c0b41981efa8dbb1a25c696ded7ba9c472e919
   patches:
     - 0001-Fix-compilation-flags-for-win32.patch
     - 0002-Remove-all-reference-of-aom_static.patch
@@ -21,6 +21,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - cmake
     - perl
