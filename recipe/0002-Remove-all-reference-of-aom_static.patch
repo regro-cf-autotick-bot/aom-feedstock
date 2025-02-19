@@ -74,17 +74,6 @@ index 8f459f39c4..7a0c183ec4 100644
    endif()
  
    if(CONFIG_TFLITE)
-@@ -629,10 +608,6 @@ if(CONFIG_AV1_ENCODER)
-     find_package(PkgConfig)
-     if(PKG_CONFIG_FOUND)
-       pkg_check_modules(VMAF REQUIRED libvmaf)
--      if(BUILD_SHARED_LIBS)
--        target_link_libraries(aom_static
--                              PRIVATE ${VMAF_LDFLAGS} ${VMAF_LIBRARIES})
--      endif()
-       target_link_libraries(aom PRIVATE ${VMAF_LDFLAGS} ${VMAF_LIBRARIES})
-       target_include_directories(aom_dsp_encoder PRIVATE ${VMAF_INCLUDE_DIRS})
-       if(VMAF_CFLAGS)
 @@ -644,9 +619,6 @@ if(CONFIG_AV1_ENCODER)
        message(FATAL_ERROR "CONFIG_TUNE_VMAF error: pkg-config not found.")
      endif()
