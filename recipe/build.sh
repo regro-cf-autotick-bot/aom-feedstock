@@ -25,3 +25,6 @@ make
 # make -j${CPU_COUNT} runtests
 
 make install
+
+# Remove the static library
+rm -f ${PREFIX}/lib/libaom.a
