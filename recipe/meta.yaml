@@ -9,7 +9,7 @@ source:
   url: https://storage.googleapis.com/aom-releases/libaom-{{ version }}.tar.gz
   sha256: d89daa160a0ea1409c4193be5b17c9591024c4f5a0e545dcb9d197535c66836e
   patches:
-    - 0002-Remove-all-reference-of-aom_static.patch
+    # - 0002-Remove-all-reference-of-aom_static.patch
 
 build:
   number: 0
